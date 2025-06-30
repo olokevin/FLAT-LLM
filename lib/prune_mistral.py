@@ -183,7 +183,7 @@ def compute_bi(args, model, tokenizer, device=torch.device("cuda:0")):
         for name in wrapped_layers:
             handles.append(subset[name].register_forward_hook(add_batch(name, i)))
 
-        print(inps.device, outs.device)
+        # print(inps.device, outs.device)
         for j in range(args.nsamples):
             with torch.no_grad(): # input and output of current layer
                 outs[j] = layer(inps[j].unsqueeze(0), attention_mask=attention_mask, position_ids=position_ids)[0]
@@ -208,7 +208,7 @@ def compute_bi(args, model, tokenizer, device=torch.device("cuda:0")):
     model.config.use_cache = use_cache 
     torch.cuda.empty_cache()
 
-    print(importances)
+    print("importances", importances)
     import os
     os.makedirs(args.bi_score, exist_ok=True)
     torch.save(importances, args.bi_score + 'bi_score.pt')

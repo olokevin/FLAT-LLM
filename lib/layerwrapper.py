@@ -192,7 +192,7 @@ class WrappedShortGPT:
         sim = torch.clamp(sim, 0, 1)
 
         if angular:
-            print("Your are using angular distance")
+            # print("Your are using angular distance")
             return (torch.arccos(sim) / torch.pi)
 
         return 1 - sim

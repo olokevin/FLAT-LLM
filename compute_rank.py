@@ -4,6 +4,28 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
+def smollm_135m():
+    bi_score_path = 'ranks/wikitext2/SmolLM-135M/bi_score.pt'
+    bi_score_angular = torch.load(bi_score_path)
+    dq = 576 * 576
+    do = 576 * 576
+    dk = 576 * 576
+    dv = 576 * 576
+    dmlp = 576 * 1536
+    bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
+    return bi_score_angular, 30, np.array([dq, dk, dv, do, dmlp])
+
+# def qwen_2_5_0_5b():
+#     bi_score_path = 'ranks/wikitext2/Qwen2.5-0.5B/bi_score.pt'
+#     bi_score_angular = torch.load(bi_score_path)
+#     dq = 4096 * 4096
+#     do = 4096 * 4096
+#     dk = 4096 * 1024
+#     dv = 4096 * 1024
+#     dmlp = 4096 * 14336
+#     bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
+#     return bi_score_angular, 32, np.array([dq, dk, dv, do, dmlp])
+
 def llama_2_7b():
     bi_score_path = 'ranks/wikitext2/llama-2-7b/bi_score.pt'
     bi_score_angular = torch.load(bi_score_path)
@@ -48,17 +70,19 @@ def llama_2_70b():
     bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
     return bi_score_angular, 80, np.array([dq, dk, dv, do, dmlp])
 
-bi_score_angular, N, sizes = llama_2_7b()
-print(bi_score_angular.sum())
-bi_score_angular, N, sizes = llama_2_13b()
-print(bi_score_angular.sum())
-bi_score_angular, N, sizes = mistral_7b()
-print(bi_score_angular.sum())
+# bi_score_angular, N, sizes = smollm_135m()
+# print(bi_score_angular.sum())
+# bi_score_angular, N, sizes = llama_2_7b()
+# print(bi_score_angular.sum())
+# bi_score_angular, N, sizes = llama_2_13b()
+# print(bi_score_angular.sum())
+# bi_score_angular, N, sizes = mistral_7b()
+# print(bi_score_angular.sum())
 # bi_score_angular, N, sizes = llama_2_70b()
 # print(bi_score_angular.sum())
 
-#%%
-import numpy as np
+# #%%
+# import numpy as np
 
 def proportional_allocation_with_cap(t, C):
     N = len(t)
@@ -86,10 +110,20 @@ import matplotlib.colors as mcolors
 
 ### choose the model you want to analyze
 dataset = 'wikitext2'
-model = "mistral-7b"  # Change this to the model you are analyzing
+# Change this to the model you are analyzing
+
+model = "smollm-135m"
+bi_score_angular, N, sizes = smollm_135m()
+
+# model = "llama-2-7b"  
 # bi_score_angular, N, sizes = llama_2_7b()
+
+# model = "llama-2-13b"
 # bi_score_angular, N, sizes = llama_2_13b()
-bi_score_angular, N, sizes = mistral_7b()
+# model = "llama-2-13b"
+# bi_score_angular, N, sizes = llama_2_13b()
+
+# model = "llama-2-70b"
 # bi_score_angular, N, sizes = llama_2_70b()
 
 import os
@@ -97,7 +131,7 @@ os.makedirs(f"ranks/{dataset}/{model}", exist_ok=True)
 colormap = plt.get_cmap('rainbow')
 fig, ax = plt.subplots()
 plt.plot(range(len(bi_score_angular)), bi_score_angular, label='importance', color='gray', linestyle='--')
-for target in [0.6, 0.5, 0.4, 0.3, 0.2, 0.1]:
+for target in [0.5, 0.4, 0.3, 0.2, 0.1]:
     r = 1 - target
     dq, dk, dv, do, dmlp = sizes
     r = (r * (dmlp * 3 + (dq + dk + dv + do)) - (dq + dk)) / (dmlp * 3 + (dv + do))
@@ -106,8 +140,11 @@ for target in [0.6, 0.5, 0.4, 0.3, 0.2, 0.1]:
     C = r * N
     phi = proportional_allocation_with_cap(bi_score_angular, C)
     print(f'max remained ratio {phi.max()*100:.2f} %, min remained ratio {phi.min() * 100:.2f} %')
+    print(f'ratio {target}')
+    print(phi)
+    print((1/phi).round(2))
     torch.save(phi, f"ranks/{dataset}/{model}/sparsity_score_{int(r*100)}%.pt")
-    plt.plot(range(N), phi, label=f'reamined_ratio={target * 100}%', color=colormap(1 - target))
+    plt.plot(range(N), phi, label=f'remained_ratio={target * 100}%', color=colormap(1 - target))
 sm = plt.cm.ScalarMappable(cmap=colormap, norm=mcolors.Normalize(vmin=0, vmax=100))
 cbar = plt.colorbar(sm, ax=ax, label='Remained Ratio (%)')
 cbar.ax.tick_params(labelsize=10)
@@ -115,4 +152,6 @@ cbar.ax.tick_params(labelsize=10)
 plt.grid()
 plt.xlabel('Layer index')
 plt.ylabel('Remained parameter ratio')
+plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.2), ncol=3)
 plt.show()
+# %%

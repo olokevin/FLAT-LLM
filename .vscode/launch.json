@@ -1,0 +1,52 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Get BI",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main_mistral.py",
+            "console": "integratedTerminal",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "args": [
+                // "--model", "mistralai/Mistral-7B-v0.1",
+                // "--bi_score", "ranks/wikitext2/mistral-7b/",
+                // "--save", "out/mistral_7b/structured/",
+
+                "--model", "HuggingFaceTB/SmolLM-135M",
+                "--bi_score", "ranks/wikitext2/SmolLM-135M/",
+                "--save", "out/SmolLM-135M/structured/",
+
+                "--prune_method", "bi",
+                "--sparsity_ratio", "1",
+            ]
+        },
+        {
+            "name": "flatllm pruning",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "1"
+            },
+            "args": [
+                "--model", "meta-llama/Llama-2-7b-hf",
+                "--prune_method", "flatllm",
+                "--sparsity_ratio", "88",
+                "--dataset", "wikitext2",
+                "--bi_score", "ranks/wikitext2/llama-2-7b/",
+                "--save", "out/llama_7b/structured/",
+                "--tol", "0.96",
+                "--nsamples", "256",
+                "--save_model", "your path/out_models/llama-2-7b/Llama-2-7b-hf_88",
+                "--seed", "42"
+            ]
+        }
+    ]
+}
