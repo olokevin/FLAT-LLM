@@ -2,7 +2,7 @@ import argparse
 import os 
 import numpy as np
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 from importlib.metadata import version
 import logging
 from lib.prune import prune_flatllm, check_structual_pruning, compute_bi
@@ -15,13 +15,27 @@ print('accelerate', version('accelerate'))
 print('# of gpus: ', torch.cuda.device_count())
 
 def get_llm(model_name, cache_dir="llm_weights"):
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name, 
-        torch_dtype=torch.float16, 
-        cache_dir=cache_dir, 
-        low_cpu_mem_usage=True, 
-        device_map="auto"
-    )
+    if 'Qwen' in model_name:
+        qwen_config=AutoConfig.from_pretrained("Qwen/Qwen2-0.5B")
+        qwen_config.vocab_size=152064
+        model=AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-0.5B", config=qwen_config, ignore_mismatched_sizes=True)
+        AutoModelForCausalLM.from_pretrained(
+            model_name, 
+            config=qwen_config,
+            ignore_mismatched_sizes=True,
+            torch_dtype=torch.float16, 
+            cache_dir=cache_dir, 
+            low_cpu_mem_usage=True, 
+            device_map="auto"
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name, 
+            torch_dtype=torch.float16, 
+            cache_dir=cache_dir, 
+            low_cpu_mem_usage=True, 
+            device_map="auto"
+        )
 
     model.seqlen = model.config.max_position_embeddings 
     print("model sequence length: ", model.seqlen)
@@ -131,6 +145,14 @@ def main():
     model = get_llm(args.model, args.cache_dir)
     tokenizer = AutoTokenizer.from_pretrained(args.model, use_fast=True)
     tokenizer.pad_token = tokenizer.eos_token
+
+    # from percipio2.skiboot.td.model import apply_tensor_decomposition 
+    # from omegaconf import OmegaConf
+    # cfg = OmegaConf.load("config.yaml") 
+    # apply_tensor_decomposition(
+    #     model,
+    #     rules=config.tensor_decomposition.rules,  # type: ignore
+    # )
     
     # check_model_devices(model)
     # print(device)

@@ -1,0 +1,342 @@
+key_value: !!python/object/new:percipio2.skiboot.td.callback.find_replace.FindReplacePair
+- !!python/object/apply:functools.partial
+  args:
+  - &id001 !!python/name:percipio2.skiboot.td.callback.find_replace.find ''
+  state: !!python/tuple
+  - *id001
+  - !!python/tuple []
+  - pattern: model\.layers\.\d+\.self_attn\.[kv]_proj
+  - null
+- !!python/object/apply:functools.partial
+  args:
+  - &id002 !!python/name:percipio2.skiboot.td.callback.find_replace.general_replace ''
+  state: !!python/tuple
+  - *id002
+  - !!python/tuple []
+  - solver_method: !!python/object/apply:functools.partial
+      args:
+      - &id003 !!python/object/apply:builtins.getattr
+        - &id007 !!python/name:percipio2.skiboot.td.config.Decomposition ''
+        - solve_low_ecf
+      state: !!python/tuple
+      - *id003
+      - !!python/tuple []
+      - number_cores: 2
+        compression_factor: 1
+        min_ranks: 10
+        topology: btt
+        out_shape: &id006 !!python/object:omegaconf.listconfig.ListConfig
+          _metadata: !!python/object:omegaconf.base.ContainerMetadata
+            ref_type: &id004 !!python/name:typing.Any ''
+            object_type: &id009 !!python/name:builtins.list ''
+            optional: true
+            key: null
+            flags:
+              allow_objects: true
+            flags_root: false
+            resolver_cache: !!python/object/apply:collections.defaultdict
+            - &id005 !!python/name:builtins.dict ''
+            key_type: &id010 !!python/name:builtins.int ''
+            element_type: *id004
+          _parent: null
+          _content:
+          - !!python/object:omegaconf.nodes.AnyNode
+            _metadata: !!python/object:omegaconf.base.Metadata
+              ref_type: *id004
+              object_type: null
+              optional: true
+              key: 0
+              flags: {}
+              flags_root: false
+              resolver_cache: !!python/object/apply:collections.defaultdict
+              - *id005
+            _parent: *id006
+            _val: 3
+          - !!python/object:omegaconf.nodes.AnyNode
+            _metadata: !!python/object:omegaconf.base.Metadata
+              ref_type: *id004
+              object_type: null
+              optional: true
+              key: 1
+              flags: {}
+              flags_root: false
+              resolver_cache: !!python/object/apply:collections.defaultdict
+              - *id005
+            _parent: *id006
+            _val: 64
+      - null
+    td_kwargs: !!python/object:omegaconf.dictconfig.DictConfig
+      _metadata: !!python/object:omegaconf.base.ContainerMetadata
+        ref_type: *id004
+        object_type: *id005
+        optional: true
+        key: null
+        flags:
+          allow_objects: true
+        flags_root: false
+        resolver_cache: !!python/object/apply:collections.defaultdict
+        - *id005
+        key_type: *id004
+        element_type: *id004
+      _parent: null
+      _content: {}
+    decompose: true
+  - null
+query: !!python/object/new:percipio2.skiboot.td.callback.find_replace.FindReplacePair
+- !!python/object/apply:functools.partial
+  args:
+  - *id001
+  state: !!python/tuple
+  - *id001
+  - !!python/tuple []
+  - pattern: model\.layers\.\d+\.self_attn\.q_proj
+  - null
+- !!python/object/apply:functools.partial
+  args:
+  - *id002
+  state: !!python/tuple
+  - *id002
+  - !!python/tuple []
+  - solver_method: !!python/object/apply:functools.partial
+      args:
+      - &id008 !!python/object/apply:builtins.getattr
+        - *id007
+        - solve_low_ecf
+      state: !!python/tuple
+      - *id008
+      - !!python/tuple []
+      - number_cores: 2
+        compression_factor: 1
+        min_ranks: 10
+        topology: btt
+        out_shape: &id011 !!python/object:omegaconf.listconfig.ListConfig
+          _metadata: !!python/object:omegaconf.base.ContainerMetadata
+            ref_type: *id004
+            object_type: *id009
+            optional: true
+            key: null
+            flags:
+              allow_objects: true
+            flags_root: false
+            resolver_cache: !!python/object/apply:collections.defaultdict
+            - *id005
+            key_type: *id010
+            element_type: *id004
+          _parent: null
+          _content:
+          - !!python/object:omegaconf.nodes.AnyNode
+            _metadata: !!python/object:omegaconf.base.Metadata
+              ref_type: *id004
+              object_type: null
+              optional: true
+              key: 0
+              flags: {}
+              flags_root: false
+              resolver_cache: !!python/object/apply:collections.defaultdict
+              - *id005
+            _parent: *id011
+            _val: 9
+          - !!python/object:omegaconf.nodes.AnyNode
+            _metadata: !!python/object:omegaconf.base.Metadata
+              ref_type: *id004
+              object_type: null
+              optional: true
+              key: 1
+              flags: {}
+              flags_root: false
+              resolver_cache: !!python/object/apply:collections.defaultdict
+              - *id005
+            _parent: *id011
+            _val: 64
+      - null
+    td_kwargs: !!python/object:omegaconf.dictconfig.DictConfig
+      _metadata: !!python/object:omegaconf.base.ContainerMetadata
+        ref_type: *id004
+        object_type: *id005
+        optional: true
+        key: null
+        flags:
+          allow_objects: true
+        flags_root: false
+        resolver_cache: !!python/object/apply:collections.defaultdict
+        - *id005
+        key_type: *id004
+        element_type: *id004
+      _parent: null
+      _content: {}
+    decompose: true
+  - null
+causal_attention_projection: !!python/object/new:percipio2.skiboot.td.callback.find_replace.FindReplacePair
+- !!python/object/apply:functools.partial
+  args:
+  - *id001
+  state: !!python/tuple
+  - *id001
+  - !!python/tuple []
+  - pattern: model\.layers\.\d+\.self_attn\.o_proj
+  - null
+- !!python/object/apply:functools.partial
+  args:
+  - *id002
+  state: !!python/tuple
+  - *id002
+  - !!python/tuple []
+  - solver_method: !!python/object/apply:functools.partial
+      args:
+      - &id012 !!python/object/apply:builtins.getattr
+        - *id007
+        - solve_low_ecf
+      state: !!python/tuple
+      - *id012
+      - !!python/tuple []
+      - number_cores: 2
+        compression_factor: 1
+        min_ranks: 8
+        topology: btt
+        in_shape: &id013 !!python/object:omegaconf.listconfig.ListConfig
+          _metadata: !!python/object:omegaconf.base.ContainerMetadata
+            ref_type: *id004
+            object_type: *id009
+            optional: true
+            key: null
+            flags:
+              allow_objects: true
+            flags_root: false
+            resolver_cache: !!python/object/apply:collections.defaultdict
+            - *id005
+            key_type: *id010
+            element_type: *id004
+          _parent: null
+          _content:
+          - !!python/object:omegaconf.nodes.AnyNode
+            _metadata: !!python/object:omegaconf.base.Metadata
+              ref_type: *id004
+              object_type: null
+              optional: true
+              key: 0
+              flags: {}
+              flags_root: false
+              resolver_cache: !!python/object/apply:collections.defaultdict
+              - *id005
+            _parent: *id013
+            _val: 9
+          - !!python/object:omegaconf.nodes.AnyNode
+            _metadata: !!python/object:omegaconf.base.Metadata
+              ref_type: *id004
+              object_type: null
+              optional: true
+              key: 1
+              flags: {}
+              flags_root: false
+              resolver_cache: !!python/object/apply:collections.defaultdict
+              - *id005
+            _parent: *id013
+            _val: 64
+      - null
+    td_kwargs: !!python/object:omegaconf.dictconfig.DictConfig
+      _metadata: !!python/object:omegaconf.base.ContainerMetadata
+        ref_type: *id004
+        object_type: *id005
+        optional: true
+        key: null
+        flags:
+          allow_objects: true
+        flags_root: false
+        resolver_cache: !!python/object/apply:collections.defaultdict
+        - *id005
+        key_type: *id004
+        element_type: *id004
+      _parent: null
+      _content: {}
+    decompose: true
+  - null
+mlp_up_gate_proj: !!python/object/new:percipio2.skiboot.td.callback.find_replace.FindReplacePair
+- !!python/object/apply:functools.partial
+  args:
+  - *id001
+  state: !!python/tuple
+  - *id001
+  - !!python/tuple []
+  - pattern: model\.layers\.\d+\.mlp\.(up|gate)_proj
+  - null
+- !!python/object/apply:functools.partial
+  args:
+  - *id002
+  state: !!python/tuple
+  - *id002
+  - !!python/tuple []
+  - solver_method: !!python/object/apply:functools.partial
+      args:
+      - &id014 !!python/object/apply:builtins.getattr
+        - *id007
+        - solve_low_ecf
+      state: !!python/tuple
+      - *id014
+      - !!python/tuple []
+      - number_cores: 2
+        compression_factor: 1
+        min_ranks: 10
+        topology: btt
+      - null
+    td_kwargs: !!python/object:omegaconf.dictconfig.DictConfig
+      _metadata: !!python/object:omegaconf.base.ContainerMetadata
+        ref_type: *id004
+        object_type: *id005
+        optional: true
+        key: null
+        flags:
+          allow_objects: true
+        flags_root: false
+        resolver_cache: !!python/object/apply:collections.defaultdict
+        - *id005
+        key_type: *id004
+        element_type: *id004
+      _parent: null
+      _content: {}
+    decompose: true
+  - null
+mlp_down_proj: !!python/object/new:percipio2.skiboot.td.callback.find_replace.FindReplacePair
+- !!python/object/apply:functools.partial
+  args:
+  - *id001
+  state: !!python/tuple
+  - *id001
+  - !!python/tuple []
+  - pattern: model\.layers\.\d+\.mlp\.down_proj
+  - null
+- !!python/object/apply:functools.partial
+  args:
+  - *id002
+  state: !!python/tuple
+  - *id002
+  - !!python/tuple []
+  - solver_method: !!python/object/apply:functools.partial
+      args:
+      - &id015 !!python/object/apply:builtins.getattr
+        - *id007
+        - solve_low_ecf
+      state: !!python/tuple
+      - *id015
+      - !!python/tuple []
+      - number_cores: 2
+        compression_factor: 1
+        min_ranks: 10
+        topology: btt
+      - null
+    td_kwargs: !!python/object:omegaconf.dictconfig.DictConfig
+      _metadata: !!python/object:omegaconf.base.ContainerMetadata
+        ref_type: *id004
+        object_type: *id005
+        optional: true
+        key: null
+        flags:
+          allow_objects: true
+        flags_root: false
+        resolver_cache: !!python/object/apply:collections.defaultdict
+        - *id005
+        key_type: *id004
+        element_type: *id004
+      _parent: null
+      _content: {}
+    decompose: true
+  - null
