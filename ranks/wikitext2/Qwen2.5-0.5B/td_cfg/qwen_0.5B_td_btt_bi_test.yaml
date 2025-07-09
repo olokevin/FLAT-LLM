@@ -1,0 +1,1421 @@
+# @package model.config.percipio.tensor_decomposition
+defaults:
+  - /tensor_decomposition_base
+
+rules:
+  query_layer_3:
+    find:
+      pattern: model\.layers\.3\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.48
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_4:
+    find:
+      pattern: model\.layers\.4\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.46
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_5:
+    find:
+      pattern: model\.layers\.5\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.57
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_6:
+    find:
+      pattern: model\.layers\.6\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.66
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_7:
+    find:
+      pattern: model\.layers\.7\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.74
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_8:
+    find:
+      pattern: model\.layers\.8\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.79
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_9:
+    find:
+      pattern: model\.layers\.9\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.19
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_10:
+    find:
+      pattern: model\.layers\.10\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_11:
+    find:
+      pattern: model\.layers\.11\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.14
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_12:
+    find:
+      pattern: model\.layers\.12\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.31
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_13:
+    find:
+      pattern: model\.layers\.13\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_14:
+    find:
+      pattern: model\.layers\.14\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_15:
+    find:
+      pattern: model\.layers\.15\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_16:
+    find:
+      pattern: model\.layers\.16\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_17:
+    find:
+      pattern: model\.layers\.17\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_18:
+    find:
+      pattern: model\.layers\.18\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_19:
+    find:
+      pattern: model\.layers\.19\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_20:
+    find:
+      pattern: model\.layers\.20\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_21:
+    find:
+      pattern: model\.layers\.21\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_22:
+    find:
+      pattern: model\.layers\.22\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  query_layer_23:
+    find:
+      pattern: model\.layers\.23\.self_attn\.q_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 14
+        - 64
+      decompose: true
+  key_layer_3:
+    find:
+      pattern: model\.layers\.3\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.48
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_4:
+    find:
+      pattern: model\.layers\.4\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.46
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_5:
+    find:
+      pattern: model\.layers\.5\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.57
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_6:
+    find:
+      pattern: model\.layers\.6\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.66
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_7:
+    find:
+      pattern: model\.layers\.7\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.74
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_8:
+    find:
+      pattern: model\.layers\.8\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.79
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_9:
+    find:
+      pattern: model\.layers\.9\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.19
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_10:
+    find:
+      pattern: model\.layers\.10\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_11:
+    find:
+      pattern: model\.layers\.11\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.14
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_12:
+    find:
+      pattern: model\.layers\.12\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.31
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_13:
+    find:
+      pattern: model\.layers\.13\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_14:
+    find:
+      pattern: model\.layers\.14\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_15:
+    find:
+      pattern: model\.layers\.15\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_16:
+    find:
+      pattern: model\.layers\.16\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_17:
+    find:
+      pattern: model\.layers\.17\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_18:
+    find:
+      pattern: model\.layers\.18\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_19:
+    find:
+      pattern: model\.layers\.19\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_20:
+    find:
+      pattern: model\.layers\.20\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_21:
+    find:
+      pattern: model\.layers\.21\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_22:
+    find:
+      pattern: model\.layers\.22\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  key_layer_23:
+    find:
+      pattern: model\.layers\.23\.self_attn\.k_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_15:
+    find:
+      pattern: model\.layers\.15\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_16:
+    find:
+      pattern: model\.layers\.16\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_17:
+    find:
+      pattern: model\.layers\.17\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_18:
+    find:
+      pattern: model\.layers\.18\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_19:
+    find:
+      pattern: model\.layers\.19\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_20:
+    find:
+      pattern: model\.layers\.20\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_21:
+    find:
+      pattern: model\.layers\.21\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_22:
+    find:
+      pattern: model\.layers\.22\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  value_layer_23:
+    find:
+      pattern: model\.layers\.23\.self_attn\.v_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        out_shape:
+        - 2
+        - 64
+      decompose: true
+  o_proj_layer_15:
+    find:
+      pattern: model\.layers\.15\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_16:
+    find:
+      pattern: model\.layers\.16\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_17:
+    find:
+      pattern: model\.layers\.17\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_18:
+    find:
+      pattern: model\.layers\.18\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_19:
+    find:
+      pattern: model\.layers\.19\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_20:
+    find:
+      pattern: model\.layers\.20\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_21:
+    find:
+      pattern: model\.layers\.21\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_22:
+    find:
+      pattern: model\.layers\.22\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  o_proj_layer_23:
+    find:
+      pattern: model\.layers\.23\.self_attn\.o_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+        in_shape:
+        - 14
+        - 64
+      decompose: true
+  mlp_up_proj_layer_7:
+    find:
+      pattern: model\.layers\.7\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.74
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_8:
+    find:
+      pattern: model\.layers\.8\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.79
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_9:
+    find:
+      pattern: model\.layers\.9\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.19
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_10:
+    find:
+      pattern: model\.layers\.10\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_11:
+    find:
+      pattern: model\.layers\.11\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.14
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_12:
+    find:
+      pattern: model\.layers\.12\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.31
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_13:
+    find:
+      pattern: model\.layers\.13\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_14:
+    find:
+      pattern: model\.layers\.14\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_15:
+    find:
+      pattern: model\.layers\.15\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_16:
+    find:
+      pattern: model\.layers\.16\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_17:
+    find:
+      pattern: model\.layers\.17\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_18:
+    find:
+      pattern: model\.layers\.18\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_19:
+    find:
+      pattern: model\.layers\.19\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_20:
+    find:
+      pattern: model\.layers\.20\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_21:
+    find:
+      pattern: model\.layers\.21\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_22:
+    find:
+      pattern: model\.layers\.22\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_up_proj_layer_23:
+    find:
+      pattern: model\.layers\.23\.mlp\.up_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_15:
+    find:
+      pattern: model\.layers\.15\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_16:
+    find:
+      pattern: model\.layers\.16\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_17:
+    find:
+      pattern: model\.layers\.17\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_18:
+    find:
+      pattern: model\.layers\.18\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_19:
+    find:
+      pattern: model\.layers\.19\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_20:
+    find:
+      pattern: model\.layers\.20\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_21:
+    find:
+      pattern: model\.layers\.21\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_22:
+    find:
+      pattern: model\.layers\.22\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_down_proj_layer_23:
+    find:
+      pattern: model\.layers\.23\.mlp\.down_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_7:
+    find:
+      pattern: model\.layers\.7\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.74
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_8:
+    find:
+      pattern: model\.layers\.8\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.79
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_9:
+    find:
+      pattern: model\.layers\.9\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.19
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_10:
+    find:
+      pattern: model\.layers\.10\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_11:
+    find:
+      pattern: model\.layers\.11\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.14
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_12:
+    find:
+      pattern: model\.layers\.12\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.31
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_13:
+    find:
+      pattern: model\.layers\.13\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.34
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_14:
+    find:
+      pattern: model\.layers\.14\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_15:
+    find:
+      pattern: model\.layers\.15\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.89
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_16:
+    find:
+      pattern: model\.layers\.16\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.8
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_17:
+    find:
+      pattern: model\.layers\.17\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.12
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_18:
+    find:
+      pattern: model\.layers\.18\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.64
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_19:
+    find:
+      pattern: model\.layers\.19\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.18
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_20:
+    find:
+      pattern: model\.layers\.20\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.98
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_21:
+    find:
+      pattern: model\.layers\.21\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.2
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_22:
+    find:
+      pattern: model\.layers\.22\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 2.08
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true
+  mlp_gate_proj_layer_23:
+    find:
+      pattern: model\.layers\.23\.mlp\.gate_proj
+    general_replace:
+      solver_method:
+        _target_: percipio2.skiboot.td.config.Decomposition.solve_low_ecf
+        _partial_: true
+        number_cores: 2
+        compression_factor: 1.0
+        min_ranks: 10
+        topology: ${oc.select:same_topology,btt}
+      decompose: true

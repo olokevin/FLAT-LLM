@@ -12,19 +12,31 @@ def smollm_135m():
     dk = 576 * 576
     dv = 576 * 576
     dmlp = 576 * 1536
-    bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
+    bi_score_angular = torch.tensor(bi_score_angular) / 2048 / 128
     return bi_score_angular, 30, np.array([dq, dk, dv, do, dmlp])
 
-# def qwen_2_5_0_5b():
-#     bi_score_path = 'ranks/wikitext2/Qwen2.5-0.5B/bi_score.pt'
-#     bi_score_angular = torch.load(bi_score_path)
-#     dq = 4096 * 4096
-#     do = 4096 * 4096
-#     dk = 4096 * 1024
-#     dv = 4096 * 1024
-#     dmlp = 4096 * 14336
-#     bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
-#     return bi_score_angular, 32, np.array([dq, dk, dv, do, dmlp])
+def qwen_2_5_0_5b():
+    bi_score_path = 'ranks/wikitext2/Qwen2.5-0.5B/bi_score.pt'
+    bi_score_angular = torch.load(bi_score_path)
+    dq = 896 * 896
+    do = 896 * 896
+    dk = 896 * 128
+    dv = 896 * 128
+    dmlp = 896 * 4864
+    bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
+    return bi_score_angular, 24, np.array([dq, dk, dv, do, dmlp])
+
+def qwen_3_8b():
+    bi_score_path = 'ranks/wikitext2/Qwen3-8B/bi_score.pt'
+    bi_score_angular = torch.load(bi_score_path)
+    dq = 4096 * 4096
+    do = 4096 * 4096
+    dk = 4096 * 1024
+    dv = 4096 * 1024
+    dmlp = 4096 * 12288
+    bi_score_angular = torch.tensor(bi_score_angular) / 4096 / 128
+    return bi_score_angular, 36, np.array([dq, dk, dv, do, dmlp])
+
 
 def llama_2_7b():
     bi_score_path = 'ranks/wikitext2/llama-2-7b/bi_score.pt'
@@ -112,8 +124,11 @@ import matplotlib.colors as mcolors
 dataset = 'wikitext2'
 # Change this to the model you are analyzing
 
-model = "smollm-135m"
-bi_score_angular, N, sizes = smollm_135m()
+# model = "SmolLM-135M"
+# bi_score_angular, N, sizes = smollm_135m()
+
+model = "Qwen2.5-0.5B"
+bi_score_angular, N, sizes = qwen_2_5_0_5b()
 
 # model = "llama-2-7b"  
 # bi_score_angular, N, sizes = llama_2_7b()
@@ -142,7 +157,7 @@ for target in [0.5, 0.4, 0.3, 0.2, 0.1]:
     print(f'max remained ratio {phi.max()*100:.2f} %, min remained ratio {phi.min() * 100:.2f} %')
     print(f'ratio {target}')
     print(phi)
-    print((1/phi).round(2))
+    print(np.array2string((1/phi).round(2), separator=', '))
     torch.save(phi, f"ranks/{dataset}/{model}/sparsity_score_{int(r*100)}%.pt")
     plt.plot(range(N), phi, label=f'remained_ratio={target * 100}%', color=colormap(1 - target))
 sm = plt.cm.ScalarMappable(cmap=colormap, norm=mcolors.Normalize(vmin=0, vmax=100))

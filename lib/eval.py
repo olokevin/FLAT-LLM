@@ -80,6 +80,7 @@ def eval_ppl_wikitext_train(model, trainloader, bs=1, device=None):
     return ppl.item()
 
 # Function to evaluate perplexity (ppl) specifically on the wikitext dataset
+@torch.no_grad()
 def eval_ppl_wikitext(model, testenc, bs=1, device=None):
     # Get input IDs
     testenc = testenc.input_ids
@@ -110,6 +111,8 @@ def eval_ppl_wikitext(model, testenc, bs=1, device=None):
         shift_logits = lm_logits[:, :-1, :].contiguous()
         shift_labels = inputs[:, 1:]
 
+        del inputs, lm_logits
+
         # Compute loss
         loss_fct = nn.CrossEntropyLoss()
         loss = loss_fct(shift_logits.reshape(-1, shift_logits.size(-1)), shift_labels.reshape(-1))
@@ -119,6 +122,8 @@ def eval_ppl_wikitext(model, testenc, bs=1, device=None):
 
         # Append to list of negative log likelihoods
         nlls.append(neg_log_likelihood)
+
+        
 
     # Compute perplexity
     ppl = torch.exp(torch.stack(nlls).sum() / (nsamples * model.seqlen))

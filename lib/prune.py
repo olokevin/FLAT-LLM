@@ -8,7 +8,9 @@ from .data import get_loaders
 from .data_utils import get_dataset, prepare_dataloader, prepare_test_dataloader
 import logging
 
-from transformers.models.llama.modeling_llama import LlamaDecoderLayer, LlamaAttention, LlamaMLP, LlamaRMSNorm
+from transformers.models.llama.modeling_llama import LlamaDecoderLayer
+from transformers.models.qwen2.modeling_qwen2 import Qwen2DecoderLayer
+# from transformers.models.qwen3.modeling_qwen3 import Qwen3DecoderLayer
 
 import pynvml
 
@@ -137,6 +139,7 @@ def prepare_calibration_input(model, n_samples, dataloader, device):
         def __init__(self, module):
             super().__init__()
             self.module = module
+            # self.attention_type = self.module.attention_type
         def forward(self, inp, **kwargs):
             inps[cache['i']] = inp
             cache['i'] += 1
@@ -182,7 +185,8 @@ def compute_bi(args, model, tokenizer, device=torch.device("cuda:0")):
     importances = []
     for i in range(len(layers)):
         layer = layers[i]
-        subset = find_layers(layer, layers=[LlamaDecoderLayer])
+        subset = find_layers(layer, layers=[LlamaDecoderLayer, Qwen2DecoderLayer])
+        # subset = find_layers(layer, layers=[LlamaDecoderLayer, Qwen2DecoderLayer, Qwen3DecoderLayer])
 
         if f"model.layers.{i}" in model.hf_device_map:   ## handle the case for llama-30B and llama-65B, when the device map has multiple GPUs;
             dev = model.hf_device_map[f"model.layers.{i}"]

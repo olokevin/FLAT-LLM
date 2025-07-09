@@ -3,3 +3,7 @@ lib/__pychache__/
 
 lib/
 llm_weights/
+
+out_models/
+
+__pycache__/

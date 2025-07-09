@@ -23,6 +23,9 @@ def get_wikitext2(nsamples, seed, seqlen, tokenizer):
     trainenc = tokenizer(" ".join(traindata['text']), return_tensors='pt')
     testenc = tokenizer("\n\n".join(testdata['text']), return_tensors='pt')
 
+    del traindata
+    del testdata
+
     # Generate samples from training set
     random.seed(seed)
     trainloader = []
