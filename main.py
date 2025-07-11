@@ -6,7 +6,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 from importlib.metadata import version
 import logging
 from lib.prune import prune_flatllm, check_structual_pruning, compute_bi
-from lib.prune_qwen import compute_bi_qwen, prune_flatllm_qwen
 from lib.eval import eval_ppl, eval_zero_shot
 from lib.svd_llm import CustomLlamaDecoderLayer
 
@@ -184,11 +183,13 @@ def main():
         logging.info("pruning starts")
         if args.prune_method == "flatllm":
             if "Qwen" in args.model:
+                from lib.prune_qwen import prune_flatllm_qwen
                 prune_flatllm_qwen(args, model, tokenizer, device)
             else:
                 prune_flatllm(args, model, tokenizer, device)
         elif args.prune_method == "bi":
             if "Qwen" in args.model:
+                from lib.prune_qwen import compute_bi_qwen
                 compute_bi_qwen(args, model, tokenizer, device)
             else:
                 compute_bi(args, model, tokenizer, device)

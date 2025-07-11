@@ -1,7 +1,6 @@
 out/
 lib/__pychache__/
 
-lib/
 llm_weights/
 
 out_models/

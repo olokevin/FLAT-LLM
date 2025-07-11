@@ -127,11 +127,11 @@ dataset = 'wikitext2'
 # model = "SmolLM-135M"
 # bi_score_angular, N, sizes = smollm_135m()
 
-# model = "Qwen2.5-0.5B"
-# bi_score_angular, N, sizes = qwen_2_5_0_5b()
+model = "Qwen2.5-0.5B"
+bi_score_angular, N, sizes = qwen_2_5_0_5b()
 
-model = "Qwen3-8B"
-bi_score_angular, N, sizes = qwen_3_8b()
+# model = "Qwen3-8B"
+# bi_score_angular, N, sizes = qwen_3_8b()
 
 # model = "llama-2-7b"  
 # bi_score_angular, N, sizes = llama_2_7b()
