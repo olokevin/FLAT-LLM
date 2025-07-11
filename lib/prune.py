@@ -139,7 +139,6 @@ def prepare_calibration_input(model, n_samples, dataloader, device):
         def __init__(self, module):
             super().__init__()
             self.module = module
-            # self.attention_type = self.module.attention_type
         def forward(self, inp, **kwargs):
             inps[cache['i']] = inp
             cache['i'] += 1

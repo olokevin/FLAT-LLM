@@ -5,10 +5,9 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 from importlib.metadata import version
 import logging
-from lib.prune import prune_flatllm, check_structual_pruning, compute_bi
-from lib.prune_qwen import compute_bi_qwen, prune_flatllm_qwen
+from lib.prune_qwen import prune_flatllm, check_structual_pruning, compute_bi
 from lib.eval import eval_ppl, eval_zero_shot
-from lib.svd_llm import CustomLlamaDecoderLayer
+# from lib.svd_llm_qwen import CustomQwenDecoderLayer
 
 print('torch', version('torch'))
 print('transformers', version('transformers'))
@@ -35,31 +34,31 @@ def replace_decoder_layers(model, args, device):
     Replace all decoder layers in a LLaMA model with CustomLlamaDecoderLayer,
     preserving original weights and layer indices.
     """
-
-    for i, org_dec in enumerate(model.model.layers):
-        org_dec.to('cpu')
-        torch.cuda.empty_cache()
-        with torch.no_grad():
-            # Instantiate custom decoder with layer index
-            new_dec = CustomLlamaDecoderLayer(model.config, layer_idx=i)
+    return NotImplementedError("Qwen3 is not supported yet")
+    # for i, org_dec in enumerate(model.model.layers):
+    #     org_dec.to('cpu')
+    #     torch.cuda.empty_cache()
+    #     with torch.no_grad():
+    #         # Instantiate custom decoder with layer index
+    #         new_dec = CustomLlamaDecoderLayer(model.config, layer_idx=i)
             
-            # Load weights from original decoder
-            new_dec.load_state_dict(org_dec.state_dict(), strict=True)
+    #         # Load weights from original decoder
+    #         new_dec.load_state_dict(org_dec.state_dict(), strict=True)
 
-            # Move to same device and dtype as original
-            new_dec.to(device=next(org_dec.parameters()).device,
-                       dtype=next(org_dec.parameters()).dtype)
+    #         # Move to same device and dtype as original
+    #         new_dec.to(device=next(org_dec.parameters()).device,
+    #                    dtype=next(org_dec.parameters()).dtype)
 
-            # Replace in model
-            model.model.layers[i] = new_dec
+    #         # Replace in model
+    #         model.model.layers[i] = new_dec
 
-            print(f"Replaced decoder layer {i + 1}/{len(model.model.layers)}")
+    #         print(f"Replaced decoder layer {i + 1}/{len(model.model.layers)}")
 
-        # Free memory
-        del org_dec
-        torch.cuda.empty_cache()
+    #     # Free memory
+    #     del org_dec
+    #     torch.cuda.empty_cache()
 
-    return model
+    # return model
 
 def check_model_devices(model):
     if not hasattr(model, "hf_device_map"):
@@ -183,15 +182,9 @@ def main():
     if args.sparsity_ratio != 0:
         logging.info("pruning starts")
         if args.prune_method == "flatllm":
-            if "Qwen" in args.model:
-                prune_flatllm_qwen(args, model, tokenizer, device)
-            else:
-                prune_flatllm(args, model, tokenizer, device)
+            prune_flatllm(args, model, tokenizer, device)
         elif args.prune_method == "bi":
-            if "Qwen" in args.model:
-                compute_bi_qwen(args, model, tokenizer, device)
-            else:
-                compute_bi(args, model, tokenizer, device)
+            compute_bi(args, model, tokenizer, device)
 
     ################################################################
     if args.prune_method != 'bi':

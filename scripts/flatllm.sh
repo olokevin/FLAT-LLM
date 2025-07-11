@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Set common variables
-# model=meta-llama/Llama-2-7b-hf
-# bi_score='ranks/wikitext2/llama-2-7b/'
-# output_dir='out/llama-2-7b/'
+model=meta-llama/Llama-2-7b-hf
+bi_score='ranks/wikitext2/llama-2-7b/'
+output_dir='out/llama-2-7b/'
 
 # model=HuggingFaceTB/SmolLM-135M
 # bi_score='ranks/wikitext2/SmolLM-135M/'
@@ -13,9 +13,9 @@
 # bi_score='ranks/wikitext2/Qwen2.5-0.5B/'
 # output_dir='out/Qwen2.5-0.5B/'
 
-model=Qwen/Qwen3-8B
-bi_score='ranks/wikitext2/Qwen3-8B/'
-output_dir='out/Qwen3-8B/'
+# model=Qwen/Qwen3-8B
+# bi_score='ranks/wikitext2/Qwen3-8B/'
+# output_dir='out/Qwen3-8B/'
 
 
 tol=0.96
