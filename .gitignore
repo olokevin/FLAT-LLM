@@ -6,4 +6,7 @@ llm_weights/
 
 out_models/
 
+ranks/
+yequan/
+
 __pycache__/
